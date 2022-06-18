@@ -2,7 +2,7 @@
 This project can be installed by
 + Click the botton titled code in the repo
 + Copy the http link
-+ Open your terminal and run git clone `https://github.com/Soji-Apps/Soji-App-Api.git`
++ Open your terminal and run git clone `https://github.com/MaryannChidimma/MinxChatApi.git`
 
 + cd to the root folder
 + Create a .env file
