@@ -1,10 +1,15 @@
+/* 
+  Imports here include filesystem,cloudinary
+  (exposed the different methods to call from the module) 
+  and constants file to use 
+*/
 import fs from "fs";
 import cloudinary, {
   UploadApiErrorResponse,
   UploadApiResponse,
 } from "cloudinary";
 import constants from "./constants";
-
+/*key-value pair configuration for cloudinary. Getting the value from the constants file */
 cloudinary.v2.config({
   cloud_name: constants.CLOUDINARY.NAME,
   api_key: constants.CLOUDINARY.API_KEY,
