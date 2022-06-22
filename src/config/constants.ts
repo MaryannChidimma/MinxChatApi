@@ -1,5 +1,11 @@
 import dotenv from 'dotenv';
 dotenv.config();
+
+/*
+  A constant file that can be used in any place in the project.
+  It contains constants for MESSAGES,CLOUDINARY,REDIS_CONFIGURATION,DB_COLLECTION,MAX_NO_OF_REF_PER_PLAN
+  and most of the constants actual values are placed in the .env file in the project
+*/
 const constants = {
   APP_NAME: "Minx",
   PORT: process.env.PORT,

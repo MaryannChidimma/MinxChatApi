@@ -9,13 +9,18 @@ import cloudinary, {
   UploadApiResponse,
 } from "cloudinary";
 import constants from "./constants";
+
 /*key-value pair configuration for cloudinary. Getting the value from the constants file */
 cloudinary.v2.config({
   cloud_name: constants.CLOUDINARY.NAME,
   api_key: constants.CLOUDINARY.API_KEY,
   api_secret: constants.CLOUDINARY.SECRET_KEY,
 });
-
+/*
+  uploadToCloud(takes in a parameter of filename in a string format)
+  It returns a promise that trys to upload the file to the server
+  TODO: MaryAnn, you can explain more here.
+*/
 const uploadToCloud = function (filename: string) {
   return new Promise<UploadApiResponse | UploadApiResponse>(
     (resolve, reject) => {

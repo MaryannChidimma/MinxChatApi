@@ -1,12 +1,12 @@
+//Imported the mongoose module and constants file
 import mongoose from "mongoose";
 import constants from "../config/constants";
-
+/*
+  database function to connect to mongoDB
+  takes in the DB URI  in the .connect method
+*/
 function databse() {
-  mongoose.connect(constants.DATABASE_URI!, {
-    //useCreateIndex: true,
-    //useNewUrlParser: true,
-    //useUnifiedTopology: true,
-  })
+  mongoose.connect(constants.DATABASE_URI!, {})
     .then(() => {
       console.log("::: Connected to database");
     })
