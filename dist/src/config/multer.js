@@ -49,7 +49,6 @@ var fileFilter = function (req, file, callback) {
         callback(null, true);
     }
 };
-
 var fileSize = function () {
     var size = 1024 * 1024 * 250;
     return size;

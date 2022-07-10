@@ -9,17 +9,6 @@ import { ErrorMiddleware } from "./src/middlewares/errorHandler";
 import apiRoutes from "./src/routes";
 require('express-async-errors')
 import { Server} from "socket.io";
-import color from "colors";
-
-// app.use(express());
-
-// const port = 8000;
-
-// app.use(cors());
-
-
-
-
 
 const app: Express = express();
 const port =  8000;
