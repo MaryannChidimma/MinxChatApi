@@ -57,7 +57,6 @@ var UserCtrl = /** @class */ (function () {
                         return [4 /*yield*/, (0, dataCrypto_1.passwordHash)(userData.password)];
                     case 1:
                         _a.password = _b.sent();
-                        console.log(userData.password);
                         return [4 /*yield*/, userService_1.default.addUser(userData)];
                     case 2:
                         response = _b.sent();

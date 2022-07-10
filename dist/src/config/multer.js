@@ -8,14 +8,19 @@ var multer_1 = __importDefault(require("multer"));
 var fs_1 = __importDefault(require("fs"));
 var path_1 = __importDefault(require("path"));
 var appError_1 = require("../../lib/appError");
+/**
+ * the storage const basically holds the module(multer.diskStorage)
+ * and performs operations to be carried out on different file types received
+ * and stores them.
+ */
 //adjust how files are stored
 var storage = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
         var dir = process.cwd();
         //Sets destination for fileType
-        var imageFormates = [".jpeg", ".png", ".jpg"];
+        var imageFormats = [".jpeg", ".png", ".jpg"];
         var musicFormat = [".mp3"];
-        if (imageFormates.includes(path_1.default.extname(file.originalname))) {
+        if (imageFormats.includes(path_1.default.extname(file.originalname))) {
             dir = dir + "/uploads/images";
         }
         else if (musicFormat.includes(path_1.default.extname(file.originalname))) {
@@ -30,6 +35,9 @@ var storage = multer_1.default.diskStorage({
         callback(null, Date.now() + "_" + file.originalname);
     },
 });
+/**
+ * this takes in a file parameter and checks if it's of the valid type and returnsthe correct response
+ */
 var fileFilter = function (req, file, callback) {
     var allFileFormat = [".jpeg", ".png", ".jpg", ".xlsx"];
     var fileExtCheck = allFileFormat.includes(path_1.default.extname(file.originalname).toLowerCase());
@@ -41,10 +49,12 @@ var fileFilter = function (req, file, callback) {
         callback(null, true);
     }
 };
+//TODO: Explain better 
 var fileSize = function () {
     var size = 1024 * 1024 * 250;
     return size;
 };
+// TODO: Explain better
 var upload = (0, multer_1.default)({
     storage: storage,
     limits: {
@@ -52,6 +62,7 @@ var upload = (0, multer_1.default)({
     },
     fileFilter: fileFilter,
 });
+//Delete file.
 var deleteFileFromServer = function (filePath) {
     fs_1.default.unlinkSync(filePath);
 };

@@ -40,17 +40,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteFromServer = exports.multipleUpload = exports.deleteFromCloud = exports.uploadToCloud = void 0;
+/*
+  Imports here include filesystem,cloudinary
+  (exposed the different methods to call from the module)
+  and constants file to use
+*/
 var fs_1 = __importDefault(require("fs"));
 var cloudinary_1 = __importDefault(require("cloudinary"));
 var constants_1 = __importDefault(require("./constants"));
+/*key-value pair configuration for cloudinary. Getting the value from the constants file */
 cloudinary_1.default.v2.config({
     cloud_name: constants_1.default.CLOUDINARY.NAME,
     api_key: constants_1.default.CLOUDINARY.API_KEY,
     api_secret: constants_1.default.CLOUDINARY.SECRET_KEY,
 });
+/*
+  uploadToCloud(takes in a parameter of filename in a string format)
+  It returns a promise that trys to upload the file to the server
+  TODO: MaryAnn, you can explain more here.
+*/
 var uploadToCloud = function (filename) {
     return new Promise(function (resolve, reject) {
-        cloudinary_1.default.v2.uploader.upload(filename, { folder: "SOJI/Every", resource_type: "auto" }, function (err, result) {
+        cloudinary_1.default.v2.uploader.upload(filename, { folder: "MINX/Every", resource_type: "auto" }, function (err, result) {
             if (err)
                 reject(err);
             if (result)

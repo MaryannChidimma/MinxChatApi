@@ -5,6 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
+/*
+  A constant file that can be used in any place in the project.
+  It contains constants for MESSAGES,CLOUDINARY,REDIS_CONFIGURATION,DB_COLLECTION,MAX_NO_OF_REF_PER_PLAN
+  and most of the constants actual values are placed in the .env file in the project
+*/
 var constants = {
     APP_NAME: "Minx",
     PORT: process.env.PORT,

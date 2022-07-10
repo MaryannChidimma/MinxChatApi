@@ -26,7 +26,7 @@ const uploadToCloud = function (filename: string) {
     (resolve, reject) => {
       cloudinary.v2.uploader.upload(
         filename,
-        { folder: "SOJI/Every", resource_type: "auto" },
+        { folder: "MINX/Every", resource_type: "auto" },
         function (err?: UploadApiErrorResponse, result?: UploadApiResponse) {
           if (err) reject(err);
           if (result) resolve(result);
