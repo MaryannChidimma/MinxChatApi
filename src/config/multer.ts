@@ -54,12 +54,10 @@ const fileFilter = function (req: express.Request, file: any, callback: any) {
     callback(null, true);
   }
 };
-//TODO: Explain better 
 const fileSize = function (): number {
   const size = 1024 * 1024 * 250;
   return size;
 };
-// TODO: Explain better
 const upload = multer({
   storage: storage,
   limits: {

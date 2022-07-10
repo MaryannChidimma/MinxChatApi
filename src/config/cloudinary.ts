@@ -19,7 +19,6 @@ cloudinary.v2.config({
 /*
   uploadToCloud(takes in a parameter of filename in a string format)
   It returns a promise that trys to upload the file to the server
-  TODO: MaryAnn, you can explain more here.
 */
 const uploadToCloud = function (filename: string) {
   return new Promise<UploadApiResponse | UploadApiResponse>(

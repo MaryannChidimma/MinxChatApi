@@ -49,12 +49,11 @@ var fileFilter = function (req, file, callback) {
         callback(null, true);
     }
 };
-//TODO: Explain better 
+
 var fileSize = function () {
     var size = 1024 * 1024 * 250;
     return size;
 };
-// TODO: Explain better
 var upload = (0, multer_1.default)({
     storage: storage,
     limits: {
