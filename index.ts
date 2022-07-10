@@ -1,3 +1,4 @@
+import http = require('http')
 import express, { Express, Request, Response } from 'express';
 import path from 'path';
 import constants from './src/config/constants'
@@ -7,11 +8,20 @@ import helmet from "helmet";
 import { ErrorMiddleware } from "./src/middlewares/errorHandler";
 import apiRoutes from "./src/routes";
 require('express-async-errors')
+import { Server} from "socket.io";
 
 const app: Express = express();
-const port = constants.PORT || 8000;
+const port =  8000;
+console.log(port)
 
-app.use(cors());
+app.use(cors(
+  {
+  origin: "*", //TODO: change origin to trusted IP
+  credentials: true,
+  exposedHeaders: ["x-id-key"],
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+));
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -24,11 +34,25 @@ app.use("/", (req, res) => {
 
 app.use(ErrorMiddleware);
 
-app.listen(port, () => {
+// socket.io for realtime activities
+const server = http.createServer(app);
+
+export const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: "*",
+  },
+});
+import "./socket"
+
+server.listen(port, () => {
   database()
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
 
 app.on("error", (error) => {
   console.log(`Error occured on the server ${error}`);
 });
+
+
+

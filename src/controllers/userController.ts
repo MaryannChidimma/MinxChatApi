@@ -9,7 +9,6 @@ class UserCtrl {
 
     let userData = req.body;
      userData.password = await passwordHash(userData.password)
-     console.log(userData.password)
 
     const response = await userService.addUser(userData);
     res.status(201).send(appResponse(constants.MESSAGES.USER_CREATED, response));
